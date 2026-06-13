@@ -21,8 +21,10 @@ const Hero = () => {
 
     const bottom = new Image()
     const top    = new Image()
+    const mobileBg = new Image()
     bottom.src = '/images/twoo.jpg'
     top.src    = '/images/vasudev1.png'
+    mobileBg.src = '/images/three.jpg'
 
     const resize = () => {
       canvas.width  = hero.offsetWidth
@@ -58,7 +60,10 @@ const Hero = () => {
       const trail = trailRef.current
       ctx.clearRect(0, 0, width, height)
 
-      ctx.drawImage(bottom, 0, 0, width, height)
+      const bg = window.innerWidth <= 768 ? mobileBg : bottom
+      if (bg.width && bg.height) {
+        ctx.drawImage(bg, 0, 0, width, height)
+      }
 
       const offscreen = document.createElement('canvas')
       offscreen.width  = width
@@ -108,9 +113,10 @@ const Hero = () => {
     }
 
     let loaded = 0
-    const onLoad = () => { if (++loaded === 2) draw() }
+    const onLoad = () => { if (++loaded === 3) draw() }
     bottom.onload = onLoad
     top.onload    = onLoad
+    mobileBg.onload = onLoad
 
     return () => {
       hero.removeEventListener('mousemove', onMove)
@@ -135,7 +141,7 @@ const Hero = () => {
   }
 
   return (
-    <div className="hero" ref={heroRef}>
+    <div id="top" className="hero" ref={heroRef}>
 
       <canvas ref={canvasRef} className="hero-canvas" />
 
@@ -183,6 +189,14 @@ const Hero = () => {
             style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic' }}>
             Winner by mindset. Builder by passion. 1st Place – Techyuva 2023 | 2nd Place – Techyuva 2025 | 3rd Place – Rastriya Vigyan Diwas 2026. As a B.Tech IT student and aspiring AI Engineer, I turn competitive coding success into building intelligent, impactful AI solutions.
           </motion.p>
+          <motion.a
+            className="st-btn"
+            variants={item}
+            href="https://drive.google.com/file/d/1aF4HFvBtxPoBNlrARvoBfXbw4sHZfcy7/view?usp=sharing"
+            download
+          >
+            Download Resume
+          </motion.a>
         </motion.div>
       </motion.div>
 

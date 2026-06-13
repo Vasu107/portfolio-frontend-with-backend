@@ -13,13 +13,20 @@ export default function Footer() {
         </div>
 
         <div className="footer-social">
-          <a className="social-link" href="#" target="_blank" rel="noreferrer">Facebook</a>
-          <a className="social-link" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a className="social-link" href="#" target="_blank" rel="noreferrer">Instagram</a>
-          <a className="social-link" href="#" target="_blank" rel="noreferrer">GitHub</a>
-          <a className="social-link" href="mailto:hello@vasudev.com">Email</a>
-        </div>
+          <a className="social-link" href="https://www.facebook.com/VasudevYadav" target="_blank" rel="noreferrer">Facebook</a>
+          <a className="social-link" href="https://www.linkedin.com/in/vasudev-yadav-7790a7328" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a className="social-link" href="https://www.instagram.com/vasudev4502" target="_blank" rel="noreferrer">Instagram</a>
+          <a className="social-link" href="https://github.com/Vasu107" target="_blank" rel="noreferrer">GitHub</a>
+          <a
+            className="social-link"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=vasudevyadav3107@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Email
+          </a>
       </div>
-    </footer>
+    </div>
+    </footer >
   )
 }

@@ -99,8 +99,8 @@ export default function About() {
       <style>{`
         @media (max-width: 768px) {
           .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .about-image-wrap { width: 160px !important; height: 80px !important; }
-          .about-image { width: 100% !important; height: 160px !important; object-position: top center !important; }
+          .about-image-wrap { width: 380px !important; height: 250px !important; }
+          .about-image { width: 100% !important; height: 250px !important; object-position: top center !important; }
           .about-right { width: 100%; }
           .about-right .bat-btn { padding: 10px 18px; }
           .about-right .section-title { font-size: 32px; }

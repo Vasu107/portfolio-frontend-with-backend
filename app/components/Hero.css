@@ -143,8 +143,8 @@
 /* ── Right panel ── */
 .right {
   position: absolute;
-  bottom: 100px;
-  right: -50px;
+  bottom: 40px;
+  right: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -186,7 +186,31 @@
 }
 
 @media (max-width: 768px) {
-  .hero { height: auto; min-height: 100dvh; }
+  .hero {
+    height: auto; 
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero::before {
+    position: static;
+  }
+
+  .hero-canvas {
+    display: none;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50vh;
+    background: url('/images/three.jpg') top center / cover no-repeat;
+    z-index: 0;
+  }
 
   .hero-content {
     position: relative;
@@ -194,20 +218,67 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding: 80px 24px 40px;
+    margin-top: 42vh; padding: 24px;
+    z-index: 11;
+    background: transparent;
+    transition: padding-top 0.25s ease;
+  }
+
+  body.navbar-open .hero-content {
+    padding-top: calc(50vh + 520px) !important;
+  }
+
+  body.navbar-open .hero-content .left,
+  body.navbar-open .hero-content .right {
+    margin-top: 24px !important;
   }
 
   .left, .right {
-    position: static;
-    width: 100%;
-    bottom: unset; left: unset; right: unset;
+    position: static !important;
+    width: 100% !important;
+    bottom: unset !important; 
+    left: unset !important; 
+    right: unset !important;
+    z-index: 1 !important;
   }
 
-  .right::before { display: none; }
-  .st-title { font-size: 44px; }
-  .right .st-title { font-size: 40px; width: 100%; }
-  .st-desc, .st-text { font-size: 15px; width: 100%; }
-  .st-btn { width: 100%; text-align: center; }
+  .left {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    opacity: 1 !important;
+  }
+
+  .right {
+    background: rgba(0, 0, 0, 0.85) !important;
+    padding: 20px;
+    border-radius: 8px;
+    opacity: 1 !important;
+    z-index: 12 !important;
+  }
+
+  .right::before { 
+    display: none !important; 
+  }
+
+  .st-title { 
+    font-size: 44px; 
+  }
+
+  .right .st-title { 
+    font-size: 40px; 
+    width: 100%; 
+  }
+
+  .st-desc, .st-text { 
+    font-size: 15px; 
+    width: 100% !important; 
+  }
+
+  .st-btn { 
+    width: 100%; 
+    text-align: center; 
+  }
 }
 
 @media (max-width: 480px) {
@@ -215,4 +286,16 @@
   .st-title { font-size: 36px; }
   .right .st-title { font-size: 32px; }
   .st-eyebrow { font-size: 11px; }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    z-index: 1 !important;
+  }
+
+  .left,
+  .right {
+    position: static !important;
+    z-index: 1 !important;
+  }
 }

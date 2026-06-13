@@ -24,6 +24,16 @@ body {
   overflow-x: hidden;
 }
 
+.section,
+#about,
+#skills,
+#projects,
+#education,
+#certifications,
+#contact {
+  scroll-margin-top: 90px;
+}
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }

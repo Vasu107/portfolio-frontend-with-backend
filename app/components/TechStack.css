@@ -48,13 +48,14 @@
 .techstack-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 2px;
+  gap: 24px;
 }
 
 /* ── Skill card ── */
 .skill-card {
   background: var(--bg3);
   border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
   padding: 28px 20px 20px;
   display: flex;
   flex-direction: column;
@@ -104,7 +105,7 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: white;
   text-align: center;
   transition: color 0.3s;
 }

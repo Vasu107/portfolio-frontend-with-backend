@@ -52,6 +52,7 @@
 }
 
 .social-link {
+  pointer-events: auto;
   font-family: 'Cinzel', serif;
   font-size: 12px;
   letter-spacing: 0.18em;

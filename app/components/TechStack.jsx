@@ -1,47 +1,47 @@
 'use client'
 import { motion } from 'framer-motion'
+import useFetch from '../hooks/useFetch'
+import { getSkills } from '../Services/api'
 import './TechStack.css'
 
-const categories = [
-  {
-    key: 'frontend',
-    label: 'Frontend',
-    skills: [
-      { name: 'HTML',    icon: 'devicon-html5-plain colored',      proficiency: 90 },
-      { name: 'CSS',     icon: 'devicon-css3-plain colored',       proficiency: 85 },
-      { name: 'JavaScript', icon: 'devicon-javascript-plain colored', proficiency: 82 },
-      { name: 'React JS',   icon: 'devicon-react-original colored',   proficiency: 80 },
-      { name: 'Next JS',    icon: 'devicon-nextjs-plain',             proficiency: 75 },
-    ],
-  },
-  {
-    key: 'backend',
-    label: 'Backend',
-    skills: [
-      { name: 'Python',     icon: 'devicon-python-plain colored',     proficiency: 80 },
-      { name: 'Django',     icon: 'devicon-django-plain colored',     proficiency: 72 },
-      { name: 'Express JS', icon: 'devicon-express-original',         proficiency: 78 },
-    ],
-  },
-  {
-    key: 'database',
-    label: 'Database',
-    skills: [
-      { name: 'MongoDB', icon: 'devicon-mongodb-plain colored', proficiency: 75 },
-    ],
-  },
-  {
-    key: 'tools',
-    label: 'Tools',
-    skills: [
-      { name: 'Git',      icon: 'devicon-git-plain colored',    proficiency: 85 },
-      { name: 'GitHub',   icon: 'devicon-github-original',      proficiency: 85 },
-      { name: 'Postman',  icon: 'devicon-postman-plain colored', proficiency: 78 },
-    ],
-  },
-]
+const categoryLabels = {
+  frontend: 'Frontend',
+  backend: 'Backend',
+  database: 'Database',
+  devops: 'DevOps',
+  other: 'Other',
+}
+
+const categoryOrder = ['frontend', 'backend', 'database', 'devops', 'other']
+
+const normalizeLabel = (key) => categoryLabels[key] || key.replace(/\b\w/g, (char) => char.toUpperCase())
 
 export default function TechStack() {
+  const { data: skills, loading, error } = useFetch(getSkills)
+  const skillList = Array.isArray(skills) ? skills : []
+
+  const groupedSkills = skillList.reduce((acc, skill) => {
+    const category = skill.category || 'other'
+    if (!acc[category]) acc[category] = []
+    acc[category].push(skill)
+    return acc
+  }, {})
+
+  const orderedCategories = [
+    ...categoryOrder.filter((key) => groupedSkills[key]).map((key) => ({
+      key,
+      label: categoryLabels[key],
+      skills: groupedSkills[key],
+    })),
+    ...Object.keys(groupedSkills)
+      .filter((key) => !categoryOrder.includes(key))
+      .map((key) => ({
+        key,
+        label: normalizeLabel(key),
+        skills: groupedSkills[key],
+      })),
+  ]
+
   return (
     <>
       {/* Devicons CDN */}
@@ -67,7 +67,13 @@ export default function TechStack() {
 
           <div className="divider" style={{ marginBottom: '56px' }} />
 
-          {categories.map((cat, ci) => (
+          {loading && <p>Loading skills...</p>}
+          {error && <p className="error-message">Unable to load skills: {error.message}</p>}
+          {!loading && !error && orderedCategories.length === 0 && (
+            <p>No skills available. Add skills in the backend to show them here.</p>
+          )}
+
+          {!loading && !error && orderedCategories.map((cat, ci) => (
             <div key={cat.key} className={`techstack-category cat-${cat.key}`}>
               <motion.h3 className="techstack-category-label"
                 initial={{ opacity: 0, x: -20 }}
@@ -78,7 +84,7 @@ export default function TechStack() {
 
               <div className="techstack-grid">
                 {cat.skills.map((skill, i) => (
-                  <motion.div key={skill.name} className="skill-card"
+                  <motion.div key={`${skill.name}-${i}`} className="skill-card"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0, transition: { delay: i * 0.08 } }}
                     viewport={{ once: true }}>
@@ -87,7 +93,7 @@ export default function TechStack() {
 
                     <span className="skill-name">{skill.name}</span>
 
-                    <div className="skill-bar" style={{ width: `${skill.proficiency}%` }} />
+                    <div className="skill-bar" style={{ width: `${skill.proficiency || 0}%` }} />
                   </motion.div>
                 ))}
               </div>
