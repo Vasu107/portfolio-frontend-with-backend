@@ -1,4 +1,4 @@
-import { getAdminToken } from '../admin/auth'
+import { getAdminToken, removeAdminToken } from '../admin/auth'
 
 const BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
 
@@ -8,6 +8,10 @@ const api = {
       headers: getAuthHeaders(),
     })
     const data = await response.json()
+    if (response.status === 401) {
+      removeAdminToken()
+      throw new Error('Unauthorized')
+    }
     if (!response.ok) throw new Error(data.message || 'Network response was not ok')
     return data
   },
@@ -21,6 +25,40 @@ const api = {
       body: JSON.stringify(body),
     })
     const data = await response.json()
+    if (response.status === 401) {
+      removeAdminToken()
+      throw new Error('Unauthorized')
+    }
+    if (!response.ok) throw new Error(data.message || 'Network response was not ok')
+    return data
+  },
+  put: async (path, body) => {
+    const response = await fetch(`${BASE}${path}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        ...getAuthHeaders(),
+      },
+      body: JSON.stringify(body),
+    })
+    const data = await response.json()
+    if (response.status === 401) {
+      removeAdminToken()
+      throw new Error('Unauthorized')
+    }
+    if (!response.ok) throw new Error(data.message || 'Network response was not ok')
+    return data
+  },
+  delete: async (path) => {
+    const response = await fetch(`${BASE}${path}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    })
+    const data = await response.json()
+    if (response.status === 401) {
+      removeAdminToken()
+      throw new Error('Unauthorized')
+    }
     if (!response.ok) throw new Error(data.message || 'Network response was not ok')
     return data
   },

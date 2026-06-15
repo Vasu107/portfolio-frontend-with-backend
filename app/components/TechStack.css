@@ -143,6 +143,11 @@
 .cat-tools .techstack-category-label { color: #a855f7; }
 .cat-tools .techstack-category-label::before { background: #a855f7; }
 
+.cat-other .skill-card::before { background: #22c55e; }
+.cat-other .skill-bar { background: #22c55e; }
+.cat-other .techstack-category-label { color: #22c55e; }
+.cat-other .techstack-category-label::before { background: #22c55e; }
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .techstack { padding: 70px 24px; }

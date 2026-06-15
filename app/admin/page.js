@@ -22,6 +22,11 @@ const adminSections = [
     href: '/admin/Skills',
   },
   {
+    title: 'Dashboard',
+    description: 'View portfolio summary stats and quick links.',
+    href: '/admin/dashbord',
+  },
+  {
     title: 'Messages',
     description: 'Review contact form submissions from visitors.',
     href: '/admin/messages',
