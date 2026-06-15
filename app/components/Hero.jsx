@@ -189,9 +189,10 @@ const Hero = () => {
             style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic' }}>
             Winner by mindset. Builder by passion. 1st Place – Techyuva 2023 | 2nd Place – Techyuva 2025 | 3rd Place – Rastriya Vigyan Diwas 2026. As a B.Tech IT student and aspiring AI Engineer, I turn competitive coding success into building intelligent, impactful AI solutions.
           </motion.p>
-          <motion.a
+          <motion.a 
             className="st-btn"
             variants={item}
+            style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.2em' }}
             href="https://drive.google.com/file/d/1aF4HFvBtxPoBNlrARvoBfXbw4sHZfcy7/view?usp=sharing"
             download
           >

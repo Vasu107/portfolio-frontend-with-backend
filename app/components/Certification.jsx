@@ -27,7 +27,7 @@ export default function Certification() {
         {loading ? (
           <p style={{ color: 'var(--text-dim)', fontStyle: 'italic' }}>Loading achievements...</p>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '32px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '32px', borderRadius: '4px' }}>
             {certs?.map((cert, i) => (
               <motion.div key={cert._id} className="bat-card"
                 initial={{ opacity: 0, y: 30 }}
@@ -36,7 +36,7 @@ export default function Certification() {
                 style={{ padding: '28px' }}>
 
                 {cert.image && (
-                  <div style={{display: "flex", justifyContent: "center", alignItems: "center",margin: "0", marginBottom: "10px",
+                  <div style={{display: "flex", justifyContent: "center", alignItems: "center",margin: "0", marginBottom: "10px"
                     }}
                   >
                     <img
