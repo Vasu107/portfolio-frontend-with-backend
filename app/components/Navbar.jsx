@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import './Navbar.css'
 
 
-const links = ['About', 'Skills', 'Projects', 'Education', 'Certifications', 'Contact']
+const links = ['About', 'Skills', 'Projects', 'Education', 'certifications', 'Contact']
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)

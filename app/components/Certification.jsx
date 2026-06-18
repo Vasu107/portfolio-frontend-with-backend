@@ -1,10 +1,10 @@
 'use client'
 import { motion } from 'framer-motion'
 import useFetch from '../hooks/useFetch'
-import { getCertifications } from '../Services/api'
+import { getcertifications } from '../Services/api'
 
-export default function Certification() {
-  const { data: certs, loading } = useFetch(getCertifications)
+export default function certification() {
+  const { data: certs, loading } = useFetch(getcertifications)
 
   return (
     <section id="certifications" className="section" style={{ background: 'var(--bg2)' }}>

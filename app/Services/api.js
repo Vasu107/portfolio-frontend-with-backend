@@ -22,5 +22,5 @@ export const api = {
 export const getProjects      = () => api.get('/projects')
 export const getSkills        = () => api.get('/skills')
 export const getEducations    = () => api.get('/education')
-export const getCertifications= () => api.get('/certifications')
+export const getcertifications= () => api.get('/certifications')
 export const sendContact      = (body) => api.post('/contact', body)

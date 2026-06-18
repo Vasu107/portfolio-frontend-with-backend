@@ -3,7 +3,7 @@ import About from './components/About'
 import TechStack from './components/TechStack'
 import Project from './components/Project'
 import Education from './components/Education'
-import Certification from './components/Certification'
+import certification from './components/certification'
 import Contact from './components/contact'
 import Footer from './components/Footer'
 
@@ -15,7 +15,7 @@ export default function Home() {
       <TechStack />
       <Project />
       <Education />
-      <Certification />
+      <certification />
       <Contact />
       <Footer />
     </>
