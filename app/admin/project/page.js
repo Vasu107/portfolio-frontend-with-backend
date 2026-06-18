@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { createProject } from '../../Services/projactService'
+import adminApi from '../../Services/adminApi'
 
 const defaultForm = {
   title: '',
@@ -42,7 +42,7 @@ export default function ProjectAdminPage() {
         featured: form.featured,
       }
 
-      await createProject(payload)
+      await adminApi.post('/projects', payload)
       setStatus('success')
       setMessage('Project created successfully.')
       setForm(defaultForm)

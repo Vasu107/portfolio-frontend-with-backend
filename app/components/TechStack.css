@@ -48,13 +48,14 @@
 .techstack-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 2px;
+  gap: 24px;
 }
 
 /* ── Skill card ── */
 .skill-card {
   background: var(--bg3);
   border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
   padding: 28px 20px 20px;
   display: flex;
   flex-direction: column;
@@ -104,7 +105,7 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: white;
   text-align: center;
   transition: color 0.3s;
 }
@@ -141,6 +142,11 @@
 .cat-tools .skill-bar             { background: #a855f7; }
 .cat-tools .techstack-category-label { color: #a855f7; }
 .cat-tools .techstack-category-label::before { background: #a855f7; }
+
+.cat-other .skill-card::before { background: #22c55e; }
+.cat-other .skill-bar { background: #22c55e; }
+.cat-other .techstack-category-label { color: #22c55e; }
+.cat-other .techstack-category-label::before { background: #22c55e; }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {

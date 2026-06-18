@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { sendContact } from '../Services/api'
 
@@ -22,6 +22,13 @@ export default function Contact() {
   const [status,  setStatus]  = useState(null)
   const [loading, setLoading] = useState(false)
 
+  useEffect(() => {
+    if (status) {
+      const timer = setTimeout(() => setStatus(null), 10000)
+      return () => clearTimeout(timer)
+    }
+  }, [status])
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
@@ -36,6 +43,7 @@ export default function Contact() {
     }
   }
 
+
   return (
     <section id="contact" className="section" style={{ background: 'var(--bg)' }}>
       <div style={{ maxWidth: '700px', margin: '0 auto' }}>
@@ -45,7 +53,7 @@ export default function Contact() {
         </motion.span>
         <motion.h2 className="section-title"
           initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          GET IN<br /><span style={{ color: 'var(--gold)' }}>TOUCH</span>
+          GET IN<span style={{ color: 'var(--gold)' }}> TOUCH</span>
         </motion.h2>
         <div className="divider" />
 

@@ -5,7 +5,8 @@ import { getProjects } from '../Services/api'
 import './Project.css'
 
 export default function Project() {
-  const { data: projects, loading } = useFetch(getProjects)
+  const { data: projects, loading, error } = useFetch(getProjects)
+  const projectItems = Array.isArray(projects) ? projects : []
 
   return (
     <section id="projects" className="section projects-section">
@@ -22,9 +23,13 @@ export default function Project() {
 
         {loading ? (
           <p className="projects-loading">Loading case files...</p>
+        ) : error ? (
+          <p className="projects-loading">Unable to load projects.</p>
+        ) : projectItems.length === 0 ? (
+          <p className="projects-loading">No projects available yet.</p>
         ) : (
           <div className="projects-grid">
-            {projects?.map((p, i) => (
+            {projectItems.map((p, i) => (
               <motion.div key={p._id} className="bat-card"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0, transition: { delay: i * 0.1 } }}

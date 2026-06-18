@@ -9,7 +9,7 @@ const stats = [
 ]
 
 const fadeUp = {
-  hidden:  { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 40 },
   visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.15, type: 'spring', stiffness: 60 } }),
 }
 
@@ -63,7 +63,7 @@ export default function About() {
           {/* Right — image + stats */}
           <div style={{ display: 'grid', gridTemplateRows: 'auto 1fr', gap: '20px', alignItems: 'start' }} className="about-right">
             <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-              <div className="about-image-wrap" style={{ width: '100%', maxWidth: '500px', height: '260px', overflow: 'hidden', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
+              <div className="about-image-wrap" style={{ width: '100%', maxWidth: '400px', height: '260px', overflow: 'hidden', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.06)' }}>
                 <img src="/images/vasudev1.png" alt="About me" className="about-image" style={{ width: '100%', height: '360px', objectFit: 'cover', objectPosition: 'top center', display: 'block' }} />
               </div>
             </div>
@@ -77,6 +77,7 @@ export default function About() {
                     background: i % 2 === 0 ? 'var(--bg3)' : 'var(--bg)',
                     borderTop: '2px solid transparent',
                     borderImage: 'linear-gradient(90deg, var(--red), var(--gold)) 1',
+                    borderRadius: '4px',
                     textAlign: 'center',
                   }}>
                   <div style={{
@@ -97,15 +98,42 @@ export default function About() {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
-          .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .about-image-wrap { width: 160px !important; height: 80px !important; }
-          .about-image { width: 100% !important; height: 160px !important; object-position: top center !important; }
-          .about-right { width: 100%; }
-          .about-right .bat-btn { padding: 10px 18px; }
-          .about-right .section-title { font-size: 32px; }
-        }
-      `}</style>
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
+    }
+
+    .about-image-wrap {
+      width: 100% !important;
+      max-width: 320px !important;
+      height: auto !important;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+
+    .about-image {
+      width: 100% !important;
+      height: auto !important;
+      object-fit: contain !important;
+      object-position: center !important;
+      display: block;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .about-right {
+      width: 100%;
+    }
+
+    .about-right .bat-btn {
+      padding: 10px 18px;
+    }
+
+    .about-right .section-title {
+      font-size: 32px;
+    }
+  }
+`}</style>
     </section>
   )
 }

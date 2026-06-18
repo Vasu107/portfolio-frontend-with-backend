@@ -4,7 +4,8 @@ import useFetch from '../hooks/useFetch'
 import { getEducations } from '../Services/api'
 
 export default function Education() {
-  const { data: educations, loading } = useFetch(getEducations)
+  const { data: educations, loading, error } = useFetch(getEducations)
+  const educationItems = Array.isArray(educations) ? educations : []
 
   return (
     <section id="education" className="section" style={{ background: 'var(--bg)' }}>
@@ -21,6 +22,10 @@ export default function Education() {
 
         {loading ? (
           <p style={{ color: 'var(--text-dim)', fontStyle: 'italic' }}>Loading origins...</p>
+        ) : error ? (
+          <p style={{ color: 'var(--text-dim)', fontStyle: 'italic' }}>Failed to load origins.</p>
+        ) : educationItems.length === 0 ? (
+          <p style={{ color: 'var(--text-dim)', fontStyle: 'italic' }}>No education data available.</p>
         ) : (
           <div style={{ position: 'relative', paddingLeft: '32px' }}>
             {/* vertical line */}
@@ -29,7 +34,7 @@ export default function Education() {
               width: '1px', background: 'linear-gradient(180deg, var(--gold), var(--red), transparent)',
             }} />
 
-            {educations?.map((edu, i) => (
+            {educationItems.map((edu, i) => (
               <motion.div key={edu._id}
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0, transition: { delay: i * 0.15 } }}
