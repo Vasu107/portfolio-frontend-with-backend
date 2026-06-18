@@ -19,7 +19,7 @@ export default function DashboardPage() {
         <div style={{ display: 'grid', gap: 18, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
           {[
             { title: 'Projects', href: '/admin/project' },
-            { title: 'certifications', href: '/admin/certification' },
+            { title: 'Certifications', href: '/admin/Certification' },
             { title: 'Education', href: '/admin/Education' },
             { title: 'Skills', href: '/admin/Skills' },
             { title: 'Messages', href: '/admin/messages' },

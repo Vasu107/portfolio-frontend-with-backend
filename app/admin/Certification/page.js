@@ -5,7 +5,7 @@ import adminApi from '../../Services/adminApi'
 
 const initialForm = { title: '', issuer: '', date: '', certificateLink: '' }
 
-export default function certificationPage() {
+export default function CertificationPage() {
   const [form, setForm] = useState(initialForm)
   const [status, setStatus] = useState('')
   const [message, setMessage] = useState('')
@@ -22,7 +22,7 @@ export default function certificationPage() {
     try {
       await adminApi.post('/certifications', form)
       setStatus('success')
-      setMessage('certification created successfully.')
+      setMessage('Certification created successfully.')
       setForm(initialForm)
     } catch (err) {
       setStatus('error')
@@ -36,7 +36,7 @@ export default function certificationPage() {
       <div style={{ maxWidth: 980, margin: '0 auto' }}>
         <section style={{ marginBottom: 32 }}>
           <p style={{ color: '#c9a44a', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 10 }}>
-            certification Manager
+            Certification Manager
           </p>
           <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2.8rem, 4vw, 4.4rem)', margin: 0 }}>
             Add a new certification
@@ -61,7 +61,7 @@ export default function certificationPage() {
             <input value={form.certificateLink} onChange={handleChange('certificateLink')} style={inputStyle} />
           </label>
           <button type="submit" style={buttonStyle}>
-            {status === 'saving' ? 'Saving…' : 'Create certification'}
+            {status === 'saving' ? 'Saving…' : 'Create Certification'}
           </button>
         </form>
 

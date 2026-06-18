@@ -7,9 +7,9 @@ const adminSections = [
     href: '/admin/project',
   },
   {
-    title: 'certification Manager',
+    title: 'Certification Manager',
     description: 'Manage certifications shown in your portfolio.',
-    href: '/admin/certification',
+    href: '/admin/Certification',
   },
   {
     title: 'Education Manager',
